@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta name="author" content="Marin Blažić">
+  <meta name="Description" content="AMD Ryzen Processors">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <title>Registracija i prijava korisnika</title>
+</head>
+<body>
+    <header>
+        <img src="slike/ryzen.svg" alt="banner" class="banner">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ryzen.html">Ryzen</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container3">
+        <h1>Registracija korisnika</h1>
+        <form id="register-form" action="/register" method="post">
+        <label for="username">Korisničko ime:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Lozinka:</label><br>
+        <input type="password" id="password" name="password"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+        <input type="submit" value="Registriraj se" onclick="register()">
+    </form> 
+    </div>
+
+    <div class="container3">
+        <h1>Prijava korisnika</h1>
+        <form id="login-form" action="/login" method="post">
+        <label for="username">Korisničko ime:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Lozinka:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Prijavi se" onclick="login()">
+    </form> 
+    </div>
+
+  <script>
+    // Funkcija za spremanje podataka u XML datoteku
+    function saveToXML(username, password, email) {
+      // Stvaramo novi XML dokument
+      var xmlDoc = document.implementation.createDocument(null, "korisnici", null);
+
+      // Stvaramo novi element za svakog korisnika
+      var korisnik = xmlDoc.createElement("korisnik");
+      korisnik.setAttribute("username", username);
+      korisnik.setAttribute("password", password);
+      korisnik.setAttribute("email", email);
+
+      // Dodajemo korisnika u XML dokument
+      xmlDoc.documentElement.appendChild(korisnik);
+
+      // Kreiramo XML string
+      var xmlString = new XMLSerializer().serializeToString(xmlDoc);
+
+      // Pošaljemo XML string na server
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/save", true);
+      xhr.setRequestHeader("Content-Type", "application/xml");
+      xhr.send(xmlString);
+    }
+
+
+// Funkcija koja se poziva kada se forma za registraciju submita
+function register() {
+  // Dohvaćamo podatke iz forme
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+  var email = document.getElementById("email").value;
+
+  // Pozivamo funkciju za spremanje podataka u XML datoteku
+  saveToXML(username, password, email);
+}
+<footer>
+			<p>Copyright © Marin Blažić<a href="https://github.com/Bembek5" target="_blank">
+			<img src="github.jpg" title="Github" alt="Github"></a></p>
+      <div>
+			<center>
+				<br><br><p><b>Social media:</b></p>
+				<a href="https://www.facebook.com/AMD/" target="_blank" class="fa fa-facebook"></a> 
+				<a href="https://www.instagram.com/amd/" target="_blank" class="fa fa-instagram"></a> 
+				<a href="https://twitter.com/AMD" target="_blank" class="fa fa-twitter"></a> 
+				<br><br>
+			</center>
+		</div>
+
+		<footer><p>Copyright &copy; Marin Blažić <a href="https://github.com/Bembek5" target="_blank"><img src="github.png" width="18px" title="Github" alt="Github"></a></p>
+		</footer>
+	</body>
+</html>
