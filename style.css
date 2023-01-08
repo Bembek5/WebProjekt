@@ -61,13 +61,12 @@ table.data {
   color: white;
 }
 
-
 footer {
-	width: 100%;
 	text-align: center;
-	background-color: black;
+	background-color: rgb(99, 0, 0);
 	color: white;
-	height: 40px;
+	height: 80px;
+  	padding: 4%;
 	clear :both;
 }
 
@@ -258,3 +257,42 @@ figcaption span {
   padding: 0.5em;
 }
 
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 70%;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #152a57;
+  color: white;
+}
+
+.fa-twitter {
+  background: #389be7;
+  color: white;
+}
+
+.fa-instagram {
+  background: #f15626;
+  color: white;
+}
+
+.news {
+  display: flex;
+  justify-content: center;
+  border-radius: 100%;
+  margin: 2px;
+}
+
+.map{
+  display: grid;
+  padding: 7px 7px 20px 7px;
+}
