@@ -131,7 +131,7 @@ footer {
   flex-direction: row;
   justify-content: center;
   align-items: left;
-	padding: 10px 25px;
+  padding: 10px 25px;
 }
 .home {
 	padding-left: 25px;
@@ -295,4 +295,14 @@ figcaption span {
 .map{
   display: grid;
   padding: 7px 7px 20px 7px;
+}
+
+#register-form{
+  width: 15%;
+  padding: 10px 25px;
+}
+
+#login-form{
+  width: 15%;
+  padding: 10px 25px;
 }
